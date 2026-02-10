@@ -100,7 +100,7 @@ public class MainSignatureTest {
 
         assertNotNull(result, "getGreeting must not return null");
         assertTrue(result.contains(userName),
-            "Greeting should contain the username: expected to contain '" + userName + "', but got '" + result + "'");
+                "Greeting should contain the username: expected to contain '" + userName + "', but got '" + result + "'");
     }
 
     /**
@@ -115,7 +115,7 @@ public class MainSignatureTest {
 
         assertNotNull(result, "getGreeting must not return null");
         assertTrue(result.contains("Guest") || result.contains("World"),
-            "Greeting should contain 'Guest' or 'World' when env var not present, but got: " + result);
+                "Greeting should contain 'Guest' or 'World' when env var not present, but got: " + result);
     }
 
     /**
@@ -129,7 +129,7 @@ public class MainSignatureTest {
 
         assertTrue(Modifier.isStatic(m.getModifiers()), "processValues must be static");
         assertTrue(Modifier.isPublic(m.getModifiers()), "processValues must be public");
-        assertEquals(void.class, m.getReturnType(), "processValues must return void");
+        assertEquals(int.class, m.getReturnType(), "processValues must return Integer");
     }
 
     /**
@@ -141,13 +141,13 @@ public class MainSignatureTest {
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         List<List<Integer>> testData = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 5, 6)
+                List.of(1, 2, 3),
+                List.of(4, 5, 6)
         );
 
         // Should not throw any exception
         assertDoesNotThrow(() -> m.invoke(null, testData),
-            "processValues should execute without throwing exceptions");
+                "processValues should execute without throwing exceptions");
     }
 
     /**
@@ -160,22 +160,22 @@ public class MainSignatureTest {
 
         // Test with 0 (should trigger labeled continue)
         List<List<Integer>> testDataWithZero = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 0, 6),
-            List.of(7, 8, 9)
+                List.of(1, 2, 3),
+                List.of(4, 0, 6),
+                List.of(7, 8, 9)
         );
 
         assertDoesNotThrow(() -> m.invoke(null, testDataWithZero),
-            "processValues should handle 0 values with labeled continue");
+                "processValues should handle 0 values with labeled continue");
 
         // Test with 99 (should trigger labeled break)
         List<List<Integer>> testDataWithNinetyNine = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 99, 6),
-            List.of(7, 8, 9)
+                List.of(1, 2, 3),
+                List.of(4, 99, 6),
+                List.of(7, 8, 9)
         );
 
         assertDoesNotThrow(() -> m.invoke(null, testDataWithNinetyNine),
-            "processValues should handle 99 values with labeled break");
+                "processValues should handle 99 values with labeled break");
     }
 }
