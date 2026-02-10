@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/vRBaX6X3)
 # Java Modern Features Assignment
 
 This assignment demonstrates modern Java features including Optional, var, switch expressions, and labeled control flow.
@@ -16,7 +17,6 @@ public static Optional<String> getUserName(String envVarName);
 ### 2. Create a public static method `getGreeting`
 - Calls `getUserName`
 - Uses `var` for local variables where the type is obvious
-- Uses a switch expression with `yield` to decide how to build the greeting based on whether the username is present
 - Constructs the greeting using `StringBuilder`
 
 ```java
@@ -27,9 +27,10 @@ public static String getGreeting(String envVarName);
 - Iterates over a `List<List<Integer>>`
 - Uses a labeled `continue` to skip to the next outer list when a condition is met
 - Uses a labeled `break` to exit processing early when a terminating condition is met
+- Returns number of processed rows
 
 ```java
-public static void processValues(List<List<Integer>> data);
+public static Integer processValues(List<List<Integer>> data);
 ```
 
 #### Example Data for `processValues`:
