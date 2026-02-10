@@ -18,7 +18,7 @@ public class MainTest {
 
     @Test
     void testGetGreeting(){
-        assertEquals("Hello, World", Main.getGreeting("Null"));
+        assertEquals("Hello, there!", Main.getGreeting("Null"));
         assertEquals("Hello, " + System.getenv("USERNAME"), Main.getGreeting("USERNAME"));
     }
 
